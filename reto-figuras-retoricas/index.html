@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d1110">
+<meta name="description" content="Laboratorio de escaparatismo: un producto, tres mensajes visuales. Reto en clase de 55 minutos con cronómetro por fases.">
+<title>EEC LAB · Un producto. Tres escaparates.</title>
+<style>
+:root{--bg:#0d1110;--panel:#151c19;--panel2:#1c2621;--line:#34443b;--acid:#c7ff4f;--text:#f5f9f1;--muted:#a5b5a8;--pink:#ff8fae;--blue:#89bcff;--orange:#ffd28b;--ease:cubic-bezier(.22,1,.36,1);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:var(--bg);color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#263d2a75,transparent 42%),var(--bg);min-height:100vh}button{font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:13px;padding:12px 17px;color:var(--text);background:#1e2923;transition:transform .25s var(--ease),background .2s,border-color .2s,box-shadow .2s}
+button:hover:not(:disabled){border-color:var(--acid);transform:translateY(-2px)}button:active:not(:disabled){transform:translateY(0) scale(.98)}button:disabled{opacity:.35;cursor:not-allowed}button:focus-visible,a:focus-visible{outline:3px solid var(--acid);outline-offset:3px}
+button.primary{background:var(--acid);border-color:var(--acid);color:#111810;font-weight:850}
+button.ghost{background:transparent}button.iconbutton{display:inline-flex;align-items:center;justify-content:center;gap:8px}
+a{color:var(--acid)}.shell{max-width:1580px;margin:auto;padding:0 clamp(18px,4vw,70px)}
+header{border-bottom:1px solid var(--line);background:#0d1110dd;backdrop-filter:blur(18px);position:sticky;top:0;z-index:30}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:76px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{font-weight:900;letter-spacing:.025em;white-space:nowrap;font-size:1rem}.brand strong{color:var(--acid);font-size:1.13em}.brand small{color:var(--muted);font-weight:650;letter-spacing:.08em;margin-left:7px}
+nav{display:flex;gap:5px;flex-wrap:wrap}nav button{border:none;background:transparent;font-size:.86rem;border-radius:99px;padding:11px 15px;color:var(--muted);font-weight:750}nav button[aria-selected="true"]{background:var(--acid);color:#111810}
+main{padding-top:35px;padding-bottom:80px}.page{animation:rise .45s var(--ease) both}.page[hidden]{display:none!important}@keyframes rise{from{opacity:.45;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{color:var(--acid);letter-spacing:.14em;font-size:.78rem;text-transform:uppercase;font-weight:900;margin:0 0 12px}.muted{color:var(--muted)}h1{font-size:clamp(3rem,7vw,7.1rem);font-weight:900;letter-spacing:-.086em;line-height:.99;margin:0 0 18px}h1 em{font-style:normal;color:var(--acid)}h2{font-size:clamp(1.7rem,3vw,3.2rem);font-weight:850;letter-spacing:-.045em;line-height:1.08;margin:0 0 18px}h3{font-size:1.3rem;letter-spacing:-.025em;margin:0 0 10px}.lead{max-width:850px;font-size:clamp(1.12rem,1.8vw,1.43rem);line-height:1.56;color:#c8d6ca}.kicker{font-weight:900;color:var(--acid);text-transform:uppercase;letter-spacing:.1em;font-size:.77rem}
+.card{border:1px solid var(--line);border-radius:22px;background:var(--panel);padding:clamp(20px,2.5vw,34px);min-width:0;box-shadow:0 18px 40px #00000012}
+.card.soft{background:var(--panel2)}.note{background:#233124;border-left:4px solid var(--acid);padding:16px 20px;border-radius:0 12px 12px 0;line-height:1.55}
+.landingMeta{display:flex;flex-wrap:wrap;gap:9px;margin:28px 0 36px}.pill{border:1px solid #445348;padding:8px 13px;border-radius:99px;font-size:.85rem;font-weight:750;color:#dbe7db}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}.giant-zero{font-size:clamp(6rem,18vw,18rem);line-height:.85;font-weight:950;letter-spacing:-.12em;color:var(--acid);text-align:center;margin:8px 0 13px}.heroGrid{display:grid;grid-template-columns:1.18fr .82fr;gap:18px;margin-top:36px}.heroGrid .card{display:flex;flex-direction:column;justify-content:space-between}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}.ruleNum{font-size:2rem;font-weight:900;color:var(--acid);margin-bottom:13px}.rules p,.card p{line-height:1.58;color:#c5d3c7;margin:10px 0 0}.visuals{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}
+.visual-card{overflow:hidden}.visual-card svg{width:100%;height:170px;display:block;background:#222c25;border-radius:15px;margin:12px 0 22px}.visual-card p{min-height:74px}
+.legend{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:16px;margin-top:18px;flex-wrap:wrap}.legend span{color:var(--muted);font-size:.82rem}
+.smallcaps{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:var(--muted)}
+.timerHeading{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+.timerHeading h1{font-size:clamp(2.6rem,5vw,5rem);margin:0}.statusPill{border:1px solid #50644e;border-radius:100px;padding:9px 14px;color:var(--acid);font-weight:900;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase}
+.workspace{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:17px;align-items:stretch}
+.clockCard{padding:clamp(24px,3.2vw,52px);background:#19211c;position:relative;overflow:hidden;min-height:500px;display:flex;flex-direction:column;justify-content:space-between}
+.clockCard:before{content:"";position:absolute;width:370px;height:370px;border-radius:100%;background:#c7ff4f12;filter:blur(80px);right:-160px;top:-170px;pointer-events:none}
+.timerPhase{font-weight:900;font-size:clamp(1rem,1.6vw,1.35rem);color:#ebf9e8;margin-top:8px}.timerIndex{color:var(--acid);font-weight:900;letter-spacing:.13em;font-size:.8rem}
+.clock{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;font-weight:900;letter-spacing:-.095em;color:var(--acid);font-size:clamp(5rem,11vw,11.2rem);line-height:1.05;text-align:left;margin:29px 0 10px;white-space:nowrap}
+.clock.warning{color:var(--orange);animation:pulse 1s ease-in-out infinite alternate}@keyframes pulse{to{opacity:.69}}
+.clock.done{color:#f5f9f1}.clockNote{font-size:1rem;color:var(--muted);min-height:25px}.progress{height:11px;border-radius:99px;background:#344339;overflow:hidden;margin:12px 0 12px}.progress i{height:100%;display:block;background:var(--acid);width:0;transition:width .25s linear}.micro{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);font-weight:750}
+.controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:26px}.controls button{min-height:48px}.controls .primary{min-width:140px}
+.taskCard{display:flex;flex-direction:column;justify-content:space-between;gap:14px}.taskCard h2{font-size:clamp(2.25rem,3.4vw,4rem);margin:9px 0 15px}.actionList{list-style:none;padding:0;margin:19px 0 12px;display:grid;gap:14px}.actionList li{display:flex;gap:13px;align-items:start;font-size:clamp(1rem,1.35vw,1.25rem);line-height:1.37;font-weight:600}.actionList li:before{content:"";width:10px;height:10px;border:2px solid var(--acid);border-radius:50%;margin-top:7px;flex:0 0 10px}.goal{padding:17px 20px;background:#243527;border-radius:15px;border:1px solid #3f5e3d}.goal strong{display:block;color:var(--acid);font-size:.79rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px}.goal p{color:#e8f2e6;margin:0;font-size:clamp(.98rem,1.3vw,1.18rem)}
+.next{padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}.next strong{color:#ebf5ea}
+.timeline{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin:17px 0 0}.step{padding:14px 12px;min-height:93px;border-radius:15px;text-align:left;border:1px solid var(--line);background:#121a15}.step span{font-size:.73rem;color:var(--muted);font-weight:900;display:block;margin-bottom:7px}.step b{font-size:.78rem;line-height:1.2;display:block}.step.active{background:#293c2a;border-color:var(--acid);box-shadow:inset 0 0 0 1px #c7ff4f36}.step.active b,.step.active span{color:var(--acid)}.step.past{border-color:#58734e}.step.past span{color:var(--acid)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;align-items:center}.tools .tip{font-size:.8rem;color:var(--muted);margin-left:auto}
+.stageTop{margin-top:35px;display:flex;align-items:center;justify-content:space-between;gap:12px}.stageTop h3{margin:0}.panelTabs{display:flex;gap:8px;flex-wrap:wrap}
+.evaluation{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}.criteria{display:grid;gap:13px}.criteriaItem{display:grid;grid-template-columns:1fr 58px;align-items:center;gap:13px;border-bottom:1px solid var(--line);padding-bottom:12px}.criteriaItem strong:last-child{color:var(--acid);font-size:1.55rem;text-align:right}.deliver{counter-reset:deliver}.deliver li{margin:0 0 17px;padding-left:10px;line-height:1.5}.endquestion{font-size:clamp(1.6rem,3vw,2.7rem);font-weight:850;letter-spacing:-.04em;line-height:1.16;color:var(--acid)}
+.teacherless{font-size:.83rem;color:var(--muted)}footer{padding:18px 0 40px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.toast{position:fixed;z-index:50;left:50%;bottom:25px;transform:translate(-50%,120px);opacity:0;pointer-events:none;border-radius:14px;border:1px solid var(--acid);background:#263a24;padding:15px 20px;box-shadow:0 20px 80px #0009;transition:transform .35s var(--ease),opacity .25s;font-weight:850;text-align:center}.toast.show{transform:translate(-50%,0);opacity:1}
+body.projector header,body.projector footer,body.projector .timerHeading,body.projector .timeline,body.projector .stageTop,body.projector .tools .tip{display:none}
+body.projector main{max-width:none;padding:1.6vw 2.2vw;min-height:100vh}body.projector .workspace{min-height:calc(100vh - 4vw);grid-template-columns:1.03fr .97fr}body.projector .clockCard{min-height:calc(100vh - 4vw)}body.projector .clock{font-size:clamp(7rem,14vw,17rem)}body.projector .taskCard h2{font-size:clamp(3rem,5vw,7rem)}body.projector .actionList li{font-size:clamp(1.2rem,1.9vw,2rem)}body.projector .timerPhase{font-size:clamp(1.4rem,2vw,2.8rem)}body.projector .taskCard{justify-content:space-between}
+@media(max-width:1100px){.workspace{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:repeat(4,1fr)}.visuals{grid-template-columns:1fr 1fr}.clock{font-size:clamp(4.1rem,9vw,8rem)}.rules{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.heroGrid,.workspace,.evaluation{grid-template-columns:1fr}.visuals,.rules{grid-template-columns:1fr}.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}.clockCard{min-height:440px}.clock{font-size:clamp(5.8rem,16vw,9rem)}.taskCard h2{font-size:2.55rem}.heroGrid{margin-top:20px}body.projector .workspace{grid-template-columns:1fr;min-height:unset}body.projector .clockCard{min-height:50vh}body.projector .clock{font-size:19vw}body.projector .taskCard h2{font-size:7vw}body.projector .actionList li{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+  <div class="shell topbar">
+    <div class="brand"><strong>ÁGIL</strong> · EEC LAB <small>/ ESCAPARATISMO</small></div>
+    <nav aria-label="Secciones del laboratorio">
+      <button type="button" data-view="challenge" aria-selected="false">01 El reto</button>
+      <button type="button" data-view="figures" aria-selected="false">02 Las figuras</button>
+      <button type="button" data-view="clock" aria-selected="true">03 Cronómetro</button>
+      <button type="button" data-view="submit" aria-selected="false">04 Entrega</button>
+    </nav>
+  </div>
+</header>
+<main class="shell">
+<section class="page" id="challenge" hidden>
+ <p class="eyebrow">Laboratorio 01 · Comunicación visual</p>
+ <h1>Un producto.<br>Tres escaparates.<br><em>Cero euros.</em></h1>
+ <p class="lead">Un objeto cotidiano. Tres composiciones. Tres mensajes diferentes. El reto consiste en convertir objetos del aula en un escaparate capaz de comunicar <strong>sin utilizar palabras</strong>.</p>
+ <div class="landingMeta"><span class="pill">55 minutos</span><span class="pill">Equipos de 3–4</span><span class="pill">Material reutilizado</span><span class="pill">Tres fotografías</span></div>
+ <div class="hero-buttons"><button class="primary" data-goto="clock">Abrir el cronómetro ↗</button><button class="ghost" data-goto="figures">Explorar las figuras →</button></div>
+ <div class="heroGrid">
+  <div class="card soft"><span class="smallcaps">La restricción es la idea</span><div class="giant-zero">0€</div><p>No compres nada. Utiliza mesas, sillas, ropa, libros, botellas, mochilas, estuches, papel usado o cualquier objeto que ya esté en el aula.</p></div>
+  <div class="card"><span class="eyebrow">Tu misión</span><h2>Haz visible<br>una idea.</h2><p>Elige <strong>un solo producto protagonista</strong> y construye tres microescaparates con oposición, paralelismo y gradación. Fotografía cada uno antes de desmontarlo.</p><div class="note">El objetivo no es decorar: es conseguir que alguien entienda un mensaje a través del espacio y los objetos.</div></div>
+ </div>
+ <div class="stageTop"><h3>Las reglas del juego</h3></div>
+ <div class="rules">
+  <div class="card"><div class="ruleNum">01</div><h3>El mismo producto</h3><p>Una zapatilla, un libro, una botella, unas gafas o cualquier objeto disponible.</p></div>
+  <div class="card"><div class="ruleNum">02</div><h3>Sin textos</h3><p>No escribas lemas dentro de la composición. El mensaje debe ser visual.</p></div>
+  <div class="card"><div class="ruleNum">03</div><h3>Vista frontal</h3><p>Diseña y fotografía como si una persona estuviera mirando un escaparate desde la calle.</p></div>
+  <div class="card"><div class="ruleNum">04</div><h3>Cero compras</h3><p>Improvisa con materiales ya disponibles. No se permite comprar ni imprimir.</p></div>
+  <div class="card"><div class="ruleNum">05</div><h3>Una foto por figura</h3><p>Antes de desmontar cada escena, documenta lo que has conseguido.</p></div>
+  <div class="card"><div class="ruleNum">06</div><h3>Comunicar, no rellenar</h3><p>Elimina los objetos que no ayuden a construir el mensaje.</p></div>
+ </div>
+</section>
+<section class="page" id="figures" hidden>
+ <p class="eyebrow">Tres estrategias visuales</p>
+ <h1>Compara.<br><em>Comunica.</em></h1>
+ <p class="lead">Las tres figuras relacionan elementos, pero de forma distinta. No confundas una simple disposición estética con un mensaje visual.</p>
+ <div class="visuals">
+  <article class="card visual-card">
+   <span class="smallcaps" style="color:var(--pink)">01 · Contraste</span>
+   <svg viewBox="0 0 360 170" role="img" aria-label="Dos espacios enfrentados, uno oscuro y otro luminoso, con un mismo objeto central">
+    <rect x="10" y="10" width="166" height="150" rx="12" fill="#293043"/><rect x="184" y="10" width="166" height="150" rx="12" fill="#c2d5c4"/>
+    <circle cx="94" cy="82" r="33" fill="#ff8fae"/><circle cx="265" cy="82" r="33" fill="#345243"/>
+    <path d="M91 37V20M91 143v-17M49 82H30M158 82h-20" stroke="#ff8fae" stroke-width="3"/>
+    <path d="M262 37V20M262 143v-17M219 82h-16M328 82h-17" stroke="#345243" stroke-width="3"/>
+   </svg>
+   <h2>Oposición</h2><p><strong>Esto frente a aquello.</strong> Dos universos contrarios: natural/artificial, pasado/futuro, orden/caos.</p>
+   <div class="legend"><strong>¿Qué diferencia revela el producto?</strong><span>Relación: contraste</span></div>
+  </article>
+  <article class="card visual-card">
+   <span class="smallcaps" style="color:var(--blue)">02 · Semejanza</span>
+   <svg viewBox="0 0 360 170" role="img" aria-label="Tres estructuras visuales similares con variaciones en el elemento central">
+    <g stroke="#89bcff" fill="none" stroke-width="3"><rect x="21" y="22" width="90" height="124" rx="9"/><rect x="135" y="22" width="90" height="124" rx="9"/><rect x="249" y="22" width="90" height="124" rx="9"/></g>
+    <circle cx="66" cy="82" r="23" fill="#89bcff"/><rect x="157" y="59" width="46" height="46" rx="6" fill="#89bcff"/><path d="M294 58L318 103H270Z" fill="#89bcff"/>
+   </svg>
+   <h2>Paralelismo</h2><p><strong>Esto se parece a aquello.</strong> Composiciones equivalentes que relacionan elementos diferentes.</p>
+   <div class="legend"><strong>¿Qué tienen en común?</strong><span>Relación: semejanza</span></div>
+  </article>
+  <article class="card visual-card">
+   <span class="smallcaps" style="color:var(--orange)">03 · Progresión</span>
+   <svg viewBox="0 0 360 170" role="img" aria-label="Cuatro plataformas de altura creciente que culminan en un elemento destacado">
+    <rect x="22" y="117" width="64" height="31" rx="5" fill="#e1ed8b"/><rect x="106" y="89" width="64" height="59" rx="5" fill="#b7d776"/><rect x="190" y="56" width="64" height="92" rx="5" fill="#86bd62"/><rect x="274" y="19" width="64" height="129" rx="5" fill="#c7ff4f"/>
+    <circle cx="54" cy="105" r="12" fill="#fff"/><circle cx="138" cy="76" r="13" fill="#fff"/><circle cx="222" cy="40" r="15" fill="#fff"/><circle cx="306" cy="1" r="16" fill="#fff"/>
+   </svg>
+   <h2>Gradación</h2><p><strong>Cada vez más o cada vez menos.</strong> Cambio progresivo de tamaño, altura, cantidad o intensidad.</p>
+   <div class="legend"><strong>¿Qué evolución se percibe?</strong><span>Relación: progresión</span></div>
+  </article>
+ </div>
+ <div class="note"><strong>Prueba de calidad:</strong> si cambias el orden de los objetos y el significado no cambia, quizá tu composición necesita una relación retórica más clara.</div>
+ <div class="hero-buttons"><button class="primary" data-goto="clock">Empezar el reto de 55 minutos →</button></div>
+</section>
+<section class="page" id="clock">
+ <div class="timerHeading"><div><p class="eyebrow">La sesión en tiempo real</p><h1>Modo <em>taller.</em></h1></div><span class="statusPill" id="runState">Listo para comenzar</span></div>
+ <div class="workspace" id="work">
+  <div class="card clockCard">
+   <div><span class="timerIndex" id="phaseCounter">FASE 01 / 07</span><div class="timerPhase" id="phaseLabel">Presentación del reto</div></div>
+   <div>
+    <div class="clock" id="clockDisplay" aria-label="Tiempo restante">05:00</div>
+    <div class="clockNote" id="clockNote">Pulsa Empezar cuando la clase esté preparada.</div>
+    <div class="progress" role="progressbar" aria-label="Progreso de la fase" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="phaseProgress"><i id="phaseBar"></i></div>
+    <div class="micro"><span id="phaseElapsed">00:00 transcurridos en esta fase</span><span id="totalLeft">55:00 restantes del taller</span></div>
+   </div>
+   <div class="controls">
+    <button class="ghost" id="previous" aria-label="Volver a la fase anterior">← Anterior</button>
+    <button class="primary" id="playPause">▶ Empezar</button>
+    <button class="ghost" id="nextStage" aria-label="Pasar a la siguiente fase">Siguiente →</button>
+   </div>
+  </div>
+  <div class="card taskCard">
+   <div>
+    <div class="eyebrow" id="currentType">Preparación · 5 minutos</div>
+    <h2 id="currentTitle">¿Qué vamos a construir?</h2>
+    <ul class="actionList" id="actions">
+      <li>Formad equipos de 3–4 personas.</li>
+      <li>Elegid un producto protagonista que tengáis en clase.</li>
+      <li>Descubrid las reglas: 0 €, sin textos, tres fotografías.</li>
+    </ul>
+   </div>
+   <div>
+    <div class="goal"><strong>Al terminar esta fase</strong><p id="goal">Cada equipo tiene su grupo y el objeto elegido.</p></div>
+    <div class="next"><span id="nextLabel">Después: bocetos e ideas · 8 minutos</span></div>
+   </div>
+  </div>
+ </div>
+ <div class="stageTop"><h3>Recorrido completo · 55 minutos</h3><span class="smallcaps">Pulsa una fase para saltar a ella</span></div>
+ <div class="timeline" id="timeline" aria-label="Fases de la sesión"></div>
+ <div class="tools">
+  <button id="project" class="ghost">⛶ Modo proyector</button>
+  <button id="sound" class="ghost" aria-pressed="true">♪ Aviso sonoro: sí</button>
+  <button id="restart" class="ghost">↻ Reiniciar sesión</button>
+  <span class="tip">Espacio: pausa · →: siguiente · ←: anterior · F: proyector</span>
+ </div>
+</section>
+<section class="page" id="submit" hidden>
+ <p class="eyebrow">Qué hay que entregar</p>
+ <h1>Tres fotos.<br><em>Una idea clara.</em></h1>
+ <div class="evaluation">
+  <div class="card">
+   <h2>Una diapositiva.</h2>
+   <ol class="deliver">
+    <li>Incluye las tres fotografías: <strong>oposición, paralelismo y gradación</strong>.</li>
+    <li>Indica para cada una <strong>qué mensaje</strong> quieres transmitir.</li>
+    <li>Explica <strong>qué decisiones visuales</strong> construyen ese significado.</li>
+    <li>Cada integrante añade <strong>una frase individual</strong> sobre qué cambiaría para mejorar la comunicación.</li>
+   </ol>
+   <div class="note">Las fotografías deben realizarse desde un punto de vista frontal, como si se observaran desde la calle. Esta herramienta no recibe ni almacena entregas.</div>
+  </div>
+  <div class="card soft">
+   <h2>Cómo se valora.</h2>
+   <div class="criteria">
+    <div class="criteriaItem"><span>Aplicación correcta de las figuras retóricas</span><strong>40%</strong></div>
+    <div class="criteriaItem"><span>Claridad del mensaje visual</span><strong>30%</strong></div>
+    <div class="criteriaItem"><span>Composición, jerarquía y uso del espacio</span><strong>20%</strong></div>
+    <div class="criteriaItem"><span>Justificación de las decisiones creativas</span><strong>10%</strong></div>
+   </div>
+   <p class="teacherless">La calificación valora qué comunica el escaparate y cómo lo hace, no el coste de los materiales.</p>
+  </div>
+ </div>
+ <div class="card" style="margin-top:18px"><p class="eyebrow">La prueba definitiva</p><div class="endquestion">¿Se entiende lo que quieres decir sin tener que explicarlo?</div><p>Si necesitas muchas palabras para defender la idea, vuelve a mirar el escaparate. ¿Qué puedes retirar, mover o enfatizar?</p></div>
+ <div class="hero-buttons"><button class="primary" data-goto="clock">Volver al cronómetro →</button></div>
+</section>
+</main>
+<footer class="shell"><span>ÁGIL CENTROS · EEC LAB · Escaparatismo y diseño de espacios comerciales</span><span>Laboratorio de comunicación visual · 2026</span></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id);};
+var stages=[
+ {name:'Presentación',title:'¿Qué vamos a construir?',type:'Preparación',seconds:5*60,
+ actions:['Formad equipos de 3–4 personas.','Elegid un producto protagonista que tengáis en clase.','Descubrid las reglas: 0 €, sin textos, tres fotografías.'],goal:'Cada equipo tiene su grupo y el objeto elegido.'},
+ {name:'Ideación',title:'Primero, piensa.',type:'Diseño previo',seconds:8*60,
+ actions:['Definid qué queréis comunicar en cada escena.','Dibujad tres bocetos rápidos: oposición, paralelismo y gradación.','Decidid qué objetos reutilizaréis y dónde irá el protagonista.'],goal:'Tres ideas visuales claras antes de tocar los objetos.'},
+ {name:'Oposición',title:'Dos mundos enfrentados.',type:'Construcción 01 de 03',seconds:9*60,
+ actions:['Construid dos universos contrarios alrededor del producto.','Haced evidente el contraste desde una vista frontal.','Fotografiad antes de desmontar.'],goal:'Foto 1: una oposición que transmite un mensaje reconocible.'},
+ {name:'Paralelismo',title:'Diferentes, pero conectados.',type:'Construcción 02 de 03',seconds:9*60,
+ actions:['Diseñad dos o más composiciones con una estructura semejante.','Mostrad qué comparten aunque los elementos sean distintos.','Fotografiad antes de desmontar.'],goal:'Foto 2: una relación de semejanza con significado.'},
+ {name:'Gradación',title:'Cada vez más.',type:'Construcción 03 de 03',seconds:9*60,
+ actions:['Organizad objetos, alturas o intensidades en una progresión clara.','Dirigid la mirada hacia el producto o el punto culminante.','Fotografiad antes de desmontar.'],goal:'Foto 3: una progresión visual que comunica una evolución.'},
+ {name:'Galería',title:'¿Qué entiende el público?',type:'Presentación cruzada',seconds:10*60,
+ actions:['Mostrad las fotografías sin títulos ni explicaciones.','Los demás identifican la figura y dicen qué mensaje perciben.','Comparad la interpretación con vuestra intención.'],goal:'Detectar qué composiciones funcionan sin explicaciones.'},
+ {name:'Reflexión',title:'Mejorar también es diseñar.',type:'Cierre',seconds:5*60,
+ actions:['Elegid qué escena fue más convincente y por qué.','Cada integrante escribe una mejora concreta.','Preparad la diapositiva final de entrega.'],goal:'Una decisión de mejora individual y la documentación del reto.'}
+];
+var total=stages.reduce(function(a,s){return a+s.seconds;},0);
+var key='eec-reto-retorica-v1';
+var index=0,remaining=stages[0].seconds,running=false,finished=false,lastTime=0,secondsTick=0,notifySound=true,fullscreenMode=false,audioCtx=null,toastTimeout=0;
+function format(s){s=Math.max(0,Math.ceil(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+function timeLeftTotal(){if(finished)return 0;return remaining+stages.slice(index+1).reduce(function(a,s){return a+s.seconds;},0);}
+function store(){try{localStorage.setItem(key,JSON.stringify({index:index,remaining:remaining,running:running,finished:finished,savedAt:Date.now(),sound:notifySound}));}catch(e){}}
+function advanceElapsed(seconds){
+ while(seconds>0&&!finished){if(seconds<remaining){remaining-=seconds;seconds=0;break;}
+  seconds-=remaining;
+  if(index>=stages.length-1){remaining=0;finished=true;running=false;break;}
+  index++;remaining=stages[index].seconds;
+ }
+}
+function restore(){try{var s=JSON.parse(localStorage.getItem(key)||'null');if(!s||!Number.isInteger(s.index)||s.index<0||s.index>=stages.length)return;index=s.index;remaining=Math.max(0,Math.min(stages[index].seconds,Number(s.remaining)||0));running=!!s.running;finished=!!s.finished;notifySound=s.sound!==false;if(running&&!finished)advanceElapsed(Math.max(0,(Date.now()-s.savedAt)/1000));lastTime=performance.now();}catch(e){}}
+function toast(message){var t=$('toast');t.textContent=message;t.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(function(){t.classList.remove('show');},3100);}
+function beep(){
+ if(!notifySound)return;
+ try{var C=window.AudioContext||window.webkitAudioContext;if(!C)return;if(!audioCtx)audioCtx=new C();
+ if(audioCtx.state==='suspended')audioCtx.resume();
+ [0,0.2].forEach(function(delay){var o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.setValueAtTime(710,audioCtx.currentTime+delay);o.frequency.exponentialRampToValueAtTime(970,audioCtx.currentTime+delay+.12);g.gain.setValueAtTime(.0001,audioCtx.currentTime+delay);g.gain.exponentialRampToValueAtTime(.09,audioCtx.currentTime+delay+.015);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+delay+.17);o.connect(g);g.connect(audioCtx.destination);o.start(audioCtx.currentTime+delay);o.stop(audioCtx.currentTime+delay+.19);});
+ }catch(e){}
+}
+function wakeAudio(){try{var C=window.AudioContext||window.webkitAudioContext;if(C){if(!audioCtx)audioCtx=new C();if(audioCtx.state==='suspended')audioCtx.resume();}}catch(e){}}
+function render(){
+ var s=stages[index],spent=s.seconds-remaining,percent=Math.max(0,Math.min(100,spent/s.seconds*100));
+ $('phaseCounter').textContent=finished?'RETO COMPLETADO':'FASE '+String(index+1).padStart(2,'0')+' / 07';
+ $('phaseLabel').textContent=s.name;
+ $('clockDisplay').textContent=format(remaining);
+ $('clockDisplay').classList.toggle('warning',running&&!finished&&remaining<=60);
+ $('clockDisplay').classList.toggle('done',finished);
+ $('clockNote').textContent=finished?'Los tres escaparates están documentados.':running?(remaining<=60?'Último minuto: deja preparada la transición.':'El tiempo está corriendo.'):('Temporizador detenido · '+format(remaining)+' disponibles');
+ $('runState').textContent=finished?'Finalizado':running?'En marcha':'En pausa / listo';
+ $('phaseBar').style.width=percent+'%';
+ $('phaseProgress').setAttribute('aria-valuenow',String(Math.round(percent)));
+ $('phaseElapsed').textContent=format(spent)+' transcurridos en esta fase';
+ $('totalLeft').textContent=format(timeLeftTotal())+' restantes del taller';
+ $('currentType').textContent=s.type+' · '+Math.round(s.seconds/60)+' minutos';
+ $('currentTitle').textContent=finished?'Reto completado.':s.title;
+ $('actions').innerHTML='';
+ s.actions.forEach(function(a){var li=document.createElement('li');li.textContent=a;$('actions').appendChild(li);});
+ $('goal').textContent=s.goal;
+ $('nextLabel').textContent=finished?'Ya podéis preparar la entrega final.':index===stages.length-1?'Después: entrega y revisión final':'Después: '+stages[index+1].name+' · '+(stages[index+1].seconds/60)+' minutos';
+ $('playPause').textContent=finished?'✓ Terminado':running?'Ⅱ Pausar':(index===0&&remaining===stages[0].seconds?'▶ Empezar':'▶ Continuar');
+ $('playPause').disabled=finished;
+ $('previous').disabled=index===0&&remaining===stages[0].seconds;
+ $('nextStage').disabled=finished;
+ document.querySelectorAll('.step').forEach(function(b,n){b.classList.toggle('active',n===index);b.classList.toggle('past',n<index);b.setAttribute('aria-current',n===index?'step':'false');});
+ $('sound').textContent=notifySound?'♪ Aviso sonoro: sí':'♪ Aviso sonoro: no';
+ $('sound').setAttribute('aria-pressed',String(notifySound));
+}
+function transition(){beep();toast(finished?'¡Reto completado!':('Nueva fase: '+stages[index].name));}
+function tick(){
+ if(!running||finished)return;
+ var now=performance.now(),dt=Math.max(0,(now-lastTime)/1000);lastTime=now;
+ var oldIndex=index,oldFinished=finished;advanceElapsed(dt);
+ if(oldIndex!==index||oldFinished!==finished)transition();
+ if((Math.floor(remaining)!==secondsTick)||oldIndex!==index||finished){secondsTick=Math.floor(remaining);render();store();}
+}
+function startStop(){if(finished)return;if(running){tick();running=false;store();}else{wakeAudio();running=true;lastTime=performance.now();store();}render();}
+function setPhase(n){if(n<0||n>=stages.length)return;running=false;finished=false;index=n;remaining=stages[n].seconds;secondsTick=Math.floor(remaining);store();render();}
+function next(){if(index<stages.length-1){setPhase(index+1);toast('Fase seleccionada: '+stages[index].name);}else if(!finished){finished=true;running=false;remaining=0;store();render();beep();toast('¡Reto completado!');}}
+function previous(){if(index>0)setPhase(index-1);else setPhase(0);}
+function restart(){if(!window.confirm('¿Reiniciar los 55 minutos desde el principio?'))return;setPhase(0);toast('Sesión reiniciada');}
+function makeTimeline(){var root=$('timeline');stages.forEach(function(s,n){var b=document.createElement('button');b.type='button';b.className='step';b.innerHTML='<span>'+String(n+1).padStart(2,'0')+' / '+(s.seconds/60)+' min</span><b>'+s.name+'</b>';b.title='Ir a '+s.name;b.addEventListener('click',function(){if(n!==index||finished){setPhase(n);toast('Fase seleccionada: '+s.name);}});root.appendChild(b);});}
+function switchPage(id){
+ if(fullscreenMode&&id!=='clock')exitProjector();
+ document.querySelectorAll('.page').forEach(function(s){s.hidden=s.id!==id;});
+ document.querySelectorAll('nav button').forEach(function(b){b.setAttribute('aria-selected',String(b.dataset.view===id));});
+ window.scrollTo({top:0,behavior:'instant'});
+}
+function exitProjector(){fullscreenMode=false;document.body.classList.remove('projector');$('project').textContent='⛶ Modo proyector';if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});}
+function projector(){switchPage('clock');if(fullscreenMode){exitProjector();return;}fullscreenMode=true;document.body.classList.add('projector');$('project').textContent='Cerrar proyección';if(document.documentElement.requestFullscreen){document.documentElement.requestFullscreen().catch(function(){toast('Proyección ampliada sin pantalla completa.');});}}
+document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&fullscreenMode){fullscreenMode=false;document.body.classList.remove('projector');$('project').textContent='⛶ Modo proyector';}});
+$('playPause').addEventListener('click',startStop);$('nextStage').addEventListener('click',next);$('previous').addEventListener('click',previous);$('restart').addEventListener('click',restart);
+$('project').addEventListener('click',projector);$('sound').addEventListener('click',function(){notifySound=!notifySound;if(notifySound){wakeAudio();beep();}store();render();});
+document.querySelectorAll('nav button').forEach(function(b){b.addEventListener('click',function(){switchPage(b.dataset.view);});});
+document.querySelectorAll('[data-goto]').forEach(function(b){b.addEventListener('click',function(){switchPage(b.dataset.goto);});});
+document.addEventListener('keydown',function(e){if(['INPUT','TEXTAREA','SELECT','BUTTON'].includes((document.activeElement&&document.activeElement.tagName)||''))return;if(e.code==='Space'){e.preventDefault();startStop();}else if(e.code==='ArrowRight'){e.preventDefault();next();}else if(e.code==='ArrowLeft'){e.preventDefault();previous();}else if(e.key.toLowerCase()==='f'){e.preventDefault();projector();}});
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&running){tick();}});
+restore();makeTimeline();render();setInterval(tick,200);
+})();
+</script>
+</body></html>
